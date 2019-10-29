@@ -20,7 +20,7 @@ def prepare_submission(vol, filename, description):
     out[vol[1::2,1::2,1::2] > 0.5] += 128
 
     f = h5py.File(filename, 'w')
-    dset = f.create_dataset('vol', (300, 720, 720), dtype='u1', compression="gzip", compression_opts=9)
+    dset = f.create_dataset('vol', (300, 720, 720), dtype='u1', compression="gzip", compression_opts=1)
     dset.attrs['description'] = description
     dset[:] = out
     f.close()
